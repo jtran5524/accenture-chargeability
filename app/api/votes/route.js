@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
 
 // Initialize Redis client
-// These environment variables are auto-set when you add Upstash in Vercel
+// These environment variables are auto-set when you add Upstash/KV in Vercel
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || '',
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
+  url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || '',
+  token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || '',
 });
 
 const REGIONS = ['Europe', 'India', 'Philippines', 'Latin America'];
@@ -14,7 +14,7 @@ const REGIONS = ['Europe', 'India', 'Philippines', 'Latin America'];
 export async function GET() {
   try {
     // Check if Redis is configured
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
+    if (!process.env.KV_REST_API_URL && !process.env.UPSTASH_REDIS_REST_URL) {
       // Return mock data for local development
       return NextResponse.json({
         'Europe': 0,
@@ -57,7 +57,7 @@ export async function POST(request) {
     }
 
     // Check if Redis is configured
-    if (!process.env.UPSTASH_REDIS_REST_URL) {
+    if (!process.env.KV_REST_API_URL && !process.env.UPSTASH_REDIS_REST_URL) {
       // Return mock response for local development
       return NextResponse.json({ 
         success: true, 
