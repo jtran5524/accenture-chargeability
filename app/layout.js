@@ -5,6 +5,9 @@ import Script from "next/script";
 export const metadata = {
   title: 'Accenture Chargeability & Bench Risk Forecaster',
   description: 'Calculate your chargeability and assess bench risk based on forecasted hours',
+  other: {
+    'google-adsense-account': 'ca-pub-6582503154261059',
+  },
 };
 
 export default function RootLayout({ children }) {
