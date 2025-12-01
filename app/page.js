@@ -9,11 +9,46 @@ const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 // Accenture NA Level Configuration
 const LEVEL_CONFIG = {
-  'Analyst': { target: 0.80, critical: 0.65 },
-  'Senior Analyst': { target: 0.85, critical: 0.70 },
-  'Consultant': { target: 0.88, critical: 0.72 },
-  'Manager': { target: 0.90, critical: 0.75 },
+  "Associate": {
+    target: 0.80,
+    critical: 0.60,
+  },
+  "Analyst": {
+    target: 0.85,
+    critical: 0.65,
+  },
+  "Senior Analyst": {
+    target: 0.87,
+    critical: 0.70,
+  },
+  "Consultant": {
+    target: 0.88,
+    critical: 0.72,
+  },
+  "Manager": {
+    target: 0.90,
+    critical: 0.75,
+  },
+  "Senior Manager": {
+    target: 0.93,
+    critical: 0.80,
+  },
+  "Managing Director": {
+    target: 0.95,
+    critical: 0.85,
+  },
 };
+
+// Career levels for dropdown
+const CAREER_LEVELS = [
+  "Associate",
+  "Analyst",
+  "Senior Analyst",
+  "Consultant",
+  "Manager",
+  "Senior Manager",
+  "Managing Director",
+];
 
 // Risk explainer text
 const RISK_EXPLAINERS = {
@@ -30,7 +65,7 @@ const getTodayString = () => {
 
 export default function Home() {
   // Form state
-  const [level, setLevel] = useState('Analyst');
+  const [level, setLevel] = useState('Associate');
   const [ytdHours, setYtdHours] = useState('');
   const [asOfDate, setAsOfDate] = useState('');
   const [mode, setMode] = useState('fullChargeable');
@@ -211,10 +246,11 @@ export default function Home() {
                   onChange={(e) => setLevel(e.target.value)}
                   className="input select"
                 >
-                  <option value="Analyst">Analyst</option>
-                  <option value="Senior Analyst">Senior Analyst</option>
-                  <option value="Consultant">Consultant</option>
-                  <option value="Manager">Manager</option>
+                  {CAREER_LEVELS.map((lvl) => (
+                    <option key={lvl} value={lvl}>
+                      {lvl}
+                    </option>
+                  ))}
                 </select>
               </div>
 
