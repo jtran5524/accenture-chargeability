@@ -231,7 +231,7 @@ export default function Home() {
                   className="input"
                 />
                 <span className="helper-text">
-                  Go to <a href="https://portal.accenture.com/#/myinfo" target="_blank" rel="noopener noreferrer" className="helper-link">portal.accenture.com</a>, click the + under Chargeability, then select "Year to Date".
+                  Go to portal.accenture.com, click the + under Chargeability, then select "Year to Date".
                 </span>
               </div>
 
