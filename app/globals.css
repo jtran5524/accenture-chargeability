@@ -876,6 +876,104 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   color: var(--text-muted);
 }
 
+/* Privacy Policy Page Styles */
+.policy-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.policy-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.policy-updated {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.policy-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.policy-section {
+  margin-bottom: 32px;
+}
+
+.policy-section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.policy-section h2::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--accenture-purple) 0%, var(--accenture-purple-dark) 100%);
+  border-radius: 2px;
+}
+
+.policy-section p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.policy-section ul {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.policy-section li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.policy-section a {
+  color: var(--accenture-purple-light);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accenture-purple-light);
+  transition: all 0.2s ease;
+}
+
+.policy-section a:hover {
+  color: var(--accenture-purple);
+  border-bottom-color: var(--accenture-purple);
+}
+
+.contact-email {
+  font-size: 1.1rem !important;
+  margin-top: 16px !important;
+}
+
+.contact-email a {
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .policy-card {
+    padding: 24px;
+  }
+}
+
 /* FAQ Page Styles */
 .faq-container {
   display: flex;

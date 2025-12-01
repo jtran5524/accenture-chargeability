@@ -78,6 +78,9 @@ export default function OtherCountriesPage() {
               FAQ
             </Link>
             <span className="pill pill-static">Other Countries</span>
+            <Link href="/privacy-policy" className="pill pill-faq">
+              Privacy Policy
+            </Link>
           </div>
           <p className="subtitle">
             Chargeability calculators for other Accenture regions.

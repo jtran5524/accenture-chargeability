@@ -61,6 +61,9 @@ export default function FAQPage() {
             <Link href="/other-countries" className="pill pill-faq">
               Other Countries
             </Link>
+            <Link href="/privacy-policy" className="pill pill-faq">
+              Privacy Policy
+            </Link>
           </div>
           <p className="subtitle">
             Everything you need to know about chargeability, bench time, and how this forecaster works.

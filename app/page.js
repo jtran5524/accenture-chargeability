@@ -189,6 +189,9 @@ export default function Home() {
             <Link href="/other-countries" className="pill pill-faq">
               Other Countries
             </Link>
+            <Link href="/privacy-policy" className="pill pill-faq">
+              Privacy Policy
+            </Link>
           </div>
           <p className="subtitle">
             Uses YTD hours from your productivity dashboard to forecast how bench weeks affect chargeability and staffing risk.
