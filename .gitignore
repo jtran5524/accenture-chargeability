@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Debug
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Local votes file (no longer needed with Redis)
+votes.json
+
+# OS files
+.DS_Store
+
