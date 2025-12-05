@@ -14,10 +14,10 @@ export default function PrivacyPolicyPage() {
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
-            <Link href="/india" className="pill pill-faq">
+            <Link href="/india" className="pill pill-india">
               Accenture · India
             </Link>
-            <Link href="/europe" className="pill pill-faq">
+            <Link href="/europe" className="pill pill-europe">
               Accenture · Europe
             </Link>
             <Link href="/faq" className="pill pill-faq">

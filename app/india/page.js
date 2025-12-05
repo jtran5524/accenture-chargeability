@@ -222,8 +222,8 @@ export default function IndiaChargeabilityPage() {
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
-            <span className="pill pill-static">Accenture · India</span>
-            <Link href="/europe" className="pill pill-faq">
+            <span className="pill pill-india pill-static">Accenture · India</span>
+            <Link href="/europe" className="pill pill-europe">
               Accenture · Europe
             </Link>
             <Link href="/faq" className="pill pill-faq">

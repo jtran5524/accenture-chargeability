@@ -192,6 +192,33 @@ body {
   cursor: default;
 }
 
+/* Region pills */
+.pill.pill-india {
+  background: #ffd600;
+  border: 2px solid #ffd600;
+  color: #000000;
+  box-shadow: 0 4px 15px rgba(255, 214, 0, 0.4);
+}
+
+.pill.pill-india:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 214, 0, 0.6);
+  background: #ffea3a;
+}
+
+.pill.pill-europe {
+  background: #00bfff;
+  border: 2px solid #00bfff;
+  color: #000814;
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+}
+
+.pill.pill-europe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 191, 255, 0.6);
+  background: #33d4ff;
+}
+
 .subtitle {
   font-size: 0.95rem;
   color: var(--text-secondary);

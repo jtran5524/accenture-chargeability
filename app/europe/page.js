@@ -222,10 +222,10 @@ export default function EuropeChargeabilityPage() {
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
-            <Link href="/india" className="pill pill-faq">
+            <Link href="/india" className="pill pill-india">
               Accenture · India
             </Link>
-            <span className="pill pill-static">
+            <span className="pill pill-europe pill-static">
               Accenture · Europe
             </span>
             <Link href="/faq" className="pill pill-faq">
