@@ -13,13 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <head>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6582503154261059"
           crossOrigin="anonymous"
           strategy="beforeInteractive"
         />
+      </head>
+      <body>
         {children}
         <Analytics />
       </body>
