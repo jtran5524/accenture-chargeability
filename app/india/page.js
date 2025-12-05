@@ -7,35 +7,35 @@ import Link from 'next/link';
 const HOURS_PER_WEEK = 40;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-// Accenture NA Level Configuration
+// Accenture India Level Configuration (ballpark values)
 const LEVEL_CONFIG = {
   "Associate": {
+    target: 0.75,
+    critical: 0.55,
+  },
+  "Analyst": {
     target: 0.80,
     critical: 0.60,
   },
-  "Analyst": {
-    target: 0.85,
+  "Senior Analyst": {
+    target: 0.82,
     critical: 0.65,
   },
-  "Senior Analyst": {
-    target: 0.87,
-    critical: 0.70,
-  },
   "Consultant": {
+    target: 0.85,
+    critical: 0.68,
+  },
+  "Manager": {
     target: 0.88,
     critical: 0.72,
   },
-  "Manager": {
+  "Senior Manager": {
     target: 0.90,
     critical: 0.75,
   },
-  "Senior Manager": {
-    target: 0.93,
-    critical: 0.80,
-  },
   "Managing Director": {
-    target: 0.95,
-    critical: 0.85,
+    target: 0.92,
+    critical: 0.80,
   },
 };
 
@@ -50,11 +50,11 @@ const CAREER_LEVELS = [
   "Managing Director",
 ];
 
-// Risk explainer text
+// Risk explainer text tuned for India context
 const RISK_EXPLAINERS = {
-  LOW: "Your projected chargeability is within or above the typical range for your level, with limited bench. In Accenture terms, this usually looks safe if performance and behavior are solid.",
-  MEDIUM: "Projected chargeability dips below target or bench time is building. This is a yellow flag at Accenture: push for billable staffing or shift more time into PD&R while you look for a project.",
-  HIGH: "Projected chargeability is in the critical range and/or bench time is significant. In Accenture North America, extended bench at these levels can increase layoff or performance risk.",
+  LOW: "Your projected chargeability is within or above the typical range for your level, with limited bench. For Accenture India, this usually looks safe if performance and behavior are solid.",
+  MEDIUM: "Projected chargeability dips below target or bench time is building. This is a yellow flag: push for billable staffing, network with leaders, and use learning / internal time effectively while you look for a project.",
+  HIGH: "Projected chargeability is in the critical range and/or bench time is significant. In Accenture India, extended bench at these levels can increase performance or retention risk.",
 };
 
 // Get today's date in YYYY-MM-DD format
@@ -63,7 +63,7 @@ const getTodayString = () => {
   return today.toISOString().split('T')[0];
 };
 
-export default function Home() {
+export default function IndiaChargeabilityPage() {
   // Form state
   const [level, setLevel] = useState('Associate');
   const [ytdHours, setYtdHours] = useState('');
@@ -85,7 +85,11 @@ export default function Home() {
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    return date.toLocaleDateString('en-IN', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
   };
 
   const calculateForecast = () => {
@@ -213,14 +217,14 @@ export default function Home() {
       <div className="container">
         <header className="header">
           <div className="logo-glow"></div>
-          <h1 className="title">Chargeability & Bench Risk Forecaster</h1>
+          <h1 className="title">Chargeability & Bench Risk Forecaster · India</h1>
           <div className="header-buttons">
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
-            <Link href="/india" className="pill pill-faq">
+            <span className="pill pill-static">
               Accenture · India
-            </Link>
+            </span>
             <Link href="/faq" className="pill pill-faq">
               FAQ
             </Link>
@@ -232,14 +236,14 @@ export default function Home() {
             </Link>
           </div>
           <p className="subtitle">
-            Uses YTD hours from your productivity dashboard to forecast how bench weeks affect chargeability and staffing risk.
+            Uses your YTD hours to forecast how bench time affects chargeability and staffing risk for Accenture India.
           </p>
         </header>
 
         <div className="two-column-layout">
           <div className="card input-card">
             <h2 className="card-title">Input Parameters</h2>
-            
+
             <div className="form-stack">
               <div className="form-group">
                 <label htmlFor="level">Career Level</label>
@@ -270,7 +274,7 @@ export default function Home() {
                   className="input"
                 />
                 <span className="helper-text">
-                  Go to portal.accenture.com, click the + under Chargeability, then select "Year to Date".
+                  Use the equivalent of your productivity / chargeability dashboard for India to get YTD hours.
                 </span>
               </div>
 
@@ -284,13 +288,13 @@ export default function Home() {
                   className="input"
                 />
                 <span className="helper-text">
-                  Use the "As of MM/DD/YYYY" shown on your dashboard.
+                  Use the "As of" date shown on your dashboard.
                 </span>
               </div>
 
               <div className="form-section">
                 <label className="section-label">What happened since this dashboard date?</label>
-                
+
                 <div className="radio-group">
                   <label className={`radio-option ${mode === 'fullChargeable' ? 'selected' : ''}`}>
                     <input
@@ -301,7 +305,9 @@ export default function Home() {
                       onChange={(e) => setMode(e.target.value)}
                     />
                     <span className="radio-custom"></span>
-                    <span className="radio-text">I've been fully chargeable from this dashboard date up to today</span>
+                    <span className="radio-text">
+                      I've been fully chargeable from this dashboard date up to today
+                    </span>
                   </label>
 
                   {mode === 'fullChargeable' && (
@@ -328,7 +334,9 @@ export default function Home() {
                       onChange={(e) => setMode(e.target.value)}
                     />
                     <span className="radio-custom"></span>
-                    <span className="radio-text">I started bench (Suspended & Unassigned) on this date</span>
+                    <span className="radio-text">
+                      I started bench (or equivalent unassigned status) on this date
+                    </span>
                   </label>
 
                   {mode === 'startedBench' && (
@@ -359,7 +367,7 @@ export default function Home() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="futureBenchWeeks">Forecast Bench Weeks (Suspended & Unassigned)</label>
+                <label htmlFor="futureBenchWeeks">Forecast Bench Weeks (unassigned)</label>
                 <input
                   id="futureBenchWeeks"
                   type="number"
@@ -395,11 +403,18 @@ export default function Home() {
                 <p className="as-of-summary">
                   {results.mode === 'fullChargeable' ? (
                     <>
-                      As of <strong>{results.todayDate}</strong>, assuming you have been fully chargeable since <strong>{results.asOfDate}</strong>, you have approximately <strong>{results.weeksTracked.toFixed(1)} weeks</strong> tracked this fiscal period (based on 40 hours/week).
+                      As of <strong>{results.todayDate}</strong>, assuming you have been fully
+                      chargeable since <strong>{results.asOfDate}</strong>, you have approximately{' '}
+                      <strong>{results.weeksTracked.toFixed(1)} weeks</strong> tracked this fiscal
+                      period (based on 40 hours/week).
                     </>
                   ) : (
                     <>
-                      As of <strong>{results.todayDate}</strong>, we estimate about <strong>{results.weeksTracked.toFixed(1)} weeks</strong> tracked this fiscal period (based on 40 hours/week), including approximately <strong>{results.pastBenchWeeks.toFixed(1)} weeks</strong> of bench since <strong>{results.benchStartDate}</strong>.
+                      As of <strong>{results.todayDate}</strong>, we estimate about{' '}
+                      <strong>{results.weeksTracked.toFixed(1)} weeks</strong> tracked this fiscal
+                      period (based on 40 hours/week), including approximately{' '}
+                      <strong>{results.pastBenchWeeks.toFixed(1)} weeks</strong> of bench since{' '}
+                      <strong>{results.benchStartDate}</strong>.
                     </>
                   )}
                 </p>
@@ -407,7 +422,8 @@ export default function Home() {
                 <div className="level-range">
                   <span className="level-badge">{level}</span>
                   <span className="range-text">
-                    Target ≥ {formatPercent(results.target)} • Critical &lt; {formatPercent(results.critical)}
+                    Target ≥ {formatPercent(results.target)} • Critical &lt;{' '}
+                    {formatPercent(results.critical)}
                   </span>
                 </div>
 
@@ -419,7 +435,9 @@ export default function Home() {
                   
                   <div className="metric highlight">
                     <span className="metric-label">Projected Chargeability</span>
-                    <span className="metric-value large">{formatPercent(results.projectedCHG)}</span>
+                    <span className="metric-value large">
+                      {formatPercent(results.projectedCHG)}
+                    </span>
                   </div>
 
                   <div className="metric">
@@ -443,7 +461,8 @@ export default function Home() {
                 </div>
 
                 <p className="results-disclaimer">
-                  Absence/PTO is treated as neutral. This model is a heuristic for personal planning only and does not represent any official HR or layoff decision logic.
+                  This model is a heuristic for personal planning only and does not represent any
+                  official HR or layoff decision logic for Accenture India.
                 </p>
               </div>
             )}
@@ -453,7 +472,7 @@ export default function Home() {
                 <div className="placeholder-content">
                   <div className="placeholder-icon">📊</div>
                   <p className="placeholder-text">
-                    Enter your YTD hours and click "Calculate Forecast" to see results
+                    Enter your YTD hours and click "Calculate Forecast" to see results.
                   </p>
                 </div>
               </div>
@@ -463,10 +482,12 @@ export default function Home() {
 
         <footer className="disclaimer">
           <p>
-            ⚠️ This is a heuristic for personal planning only. It is not official HR logic.
+            ⚠️ This is a heuristic for personal planning only. It is not official HR logic for Accenture India.
           </p>
         </footer>
       </div>
     </main>
   );
 }
+
+
