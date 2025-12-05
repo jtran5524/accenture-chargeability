@@ -221,6 +221,9 @@ export default function Home() {
             <Link href="/india" className="pill pill-faq">
               Accenture · India
             </Link>
+            <Link href="/europe" className="pill pill-faq">
+              Accenture · Europe
+            </Link>
             <Link href="/faq" className="pill pill-faq">
               FAQ
             </Link>

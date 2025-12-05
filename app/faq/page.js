@@ -57,6 +57,12 @@ export default function FAQPage() {
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
+            <Link href="/india" className="pill pill-faq">
+              Accenture · India
+            </Link>
+            <Link href="/europe" className="pill pill-faq">
+              Accenture · Europe
+            </Link>
             <span className="pill pill-static">FAQ</span>
             <Link href="/other-countries" className="pill pill-faq">
               Other Countries

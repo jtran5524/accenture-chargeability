@@ -74,6 +74,12 @@ export default function OtherCountriesPage() {
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
+            <Link href="/india" className="pill pill-faq">
+              Accenture · India
+            </Link>
+            <Link href="/europe" className="pill pill-faq">
+              Accenture · Europe
+            </Link>
             <Link href="/faq" className="pill pill-faq">
               FAQ
             </Link>

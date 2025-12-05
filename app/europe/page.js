@@ -7,31 +7,31 @@ import Link from 'next/link';
 const HOURS_PER_WEEK = 40;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-// Accenture India Level Configuration (ballpark values)
+// Accenture Europe Level Configuration (ballpark values based on typical EU consulting utilization)
 const LEVEL_CONFIG = {
   "Associate": {
-    target: 0.75,
-    critical: 0.55,
+    target: 0.78,
+    critical: 0.60,
   },
   "Analyst": {
     target: 0.80,
-    critical: 0.60,
-  },
-  "Senior Analyst": {
-    target: 0.82,
     critical: 0.65,
   },
+  "Senior Analyst": {
+    target: 0.83,
+    critical: 0.70,
+  },
   "Consultant": {
-    target: 0.85,
-    critical: 0.68,
+    target: 0.86,
+    critical: 0.73,
   },
   "Manager": {
     target: 0.88,
-    critical: 0.72,
+    critical: 0.75,
   },
   "Senior Manager": {
     target: 0.90,
-    critical: 0.75,
+    critical: 0.78,
   },
   "Managing Director": {
     target: 0.92,
@@ -50,11 +50,11 @@ const CAREER_LEVELS = [
   "Managing Director",
 ];
 
-// Risk explainer text tuned for India context
+// Risk explainer text tuned for Europe context
 const RISK_EXPLAINERS = {
-  LOW: "Your projected chargeability is within or above the typical range for your level, with limited bench. For Accenture India, this usually looks safe if performance and behavior are solid.",
-  MEDIUM: "Projected chargeability dips below target or bench time is building. This is a yellow flag: push for billable staffing, network with leaders, and use learning / internal time effectively while you look for a project.",
-  HIGH: "Projected chargeability is in the critical range and/or bench time is significant. In Accenture India, extended bench at these levels can increase performance or retention risk.",
+  LOW: "Your projected chargeability is within or above the typical range for your level, with limited bench. For Accenture Europe, this usually looks safe if performance and behavior are solid.",
+  MEDIUM: "Projected chargeability dips below target or bench time is building. This is a yellow flag: work with your project leads, career counselor, and network across accounts to find billable work, while using internal and learning time strategically.",
+  HIGH: "Projected chargeability is in the critical range and/or bench time is significant. In Accenture Europe, extended bench at these levels can increase performance or retention risk.",
 };
 
 // Get today's date in YYYY-MM-DD format
@@ -63,9 +63,9 @@ const getTodayString = () => {
   return today.toISOString().split('T')[0];
 };
 
-export default function IndiaChargeabilityPage() {
+export default function EuropeChargeabilityPage() {
   // Form state
-  const [level, setLevel] = useState('Associate');
+  const [level, setLevel] = useState('Analyst');
   const [ytdHours, setYtdHours] = useState('');
   const [asOfDate, setAsOfDate] = useState('');
   const [mode, setMode] = useState('fullChargeable');
@@ -85,7 +85,7 @@ export default function IndiaChargeabilityPage() {
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-IN', {
+    return date.toLocaleDateString('en-GB', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
@@ -217,15 +217,17 @@ export default function IndiaChargeabilityPage() {
       <div className="container">
         <header className="header">
           <div className="logo-glow"></div>
-          <h1 className="title">Chargeability & Bench Risk Forecaster · India</h1>
+          <h1 className="title">Chargeability & Bench Risk Forecaster · Europe</h1>
           <div className="header-buttons">
             <Link href="/" className="pill pill-link">
               Accenture · North America
             </Link>
-            <span className="pill pill-static">Accenture · India</span>
-            <Link href="/europe" className="pill pill-faq">
-              Accenture · Europe
+            <Link href="/india" className="pill pill-faq">
+              Accenture · India
             </Link>
+            <span className="pill pill-static">
+              Accenture · Europe
+            </span>
             <Link href="/faq" className="pill pill-faq">
               FAQ
             </Link>
@@ -237,7 +239,7 @@ export default function IndiaChargeabilityPage() {
             </Link>
           </div>
           <p className="subtitle">
-            Uses your YTD hours to forecast how bench time affects chargeability and staffing risk for Accenture India.
+            Uses your YTD hours to forecast how bench time affects chargeability and staffing risk for Accenture Europe (approximate targets).
           </p>
         </header>
 
@@ -275,7 +277,7 @@ export default function IndiaChargeabilityPage() {
                   className="input"
                 />
                 <span className="helper-text">
-                  Use the equivalent of your productivity / chargeability dashboard for India to get YTD hours.
+                  Use the equivalent of your productivity / chargeability dashboard for your European market unit to get YTD hours.
                 </span>
               </div>
 
@@ -463,7 +465,7 @@ export default function IndiaChargeabilityPage() {
 
                 <p className="results-disclaimer">
                   This model is a heuristic for personal planning only and does not represent any
-                  official HR or layoff decision logic for Accenture India.
+                  official HR or layoff decision logic for Accenture Europe. Targets are approximate; check with your local leadership for exact expectations.
                 </p>
               </div>
             )}
@@ -483,7 +485,7 @@ export default function IndiaChargeabilityPage() {
 
         <footer className="disclaimer">
           <p>
-            ⚠️ This is a heuristic for personal planning only. It is not official HR logic for Accenture India.
+            ⚠️ This is a heuristic for personal planning only. It is not official HR logic for Accenture Europe.
           </p>
         </footer>
       </div>
